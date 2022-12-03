@@ -1,6 +1,6 @@
-import kanbanAPI from "./api/KanbanAPI.js";
 
-kanbanAPI.updateItem(41676,{
-    columnId: 1,
-    position:0
-});
+import Kanban  from "./view/kanban.js";
+
+new Kanban(
+    document.querySelector(".kanban")
+);
