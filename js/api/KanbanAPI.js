@@ -4,8 +4,9 @@ export default class KanbanAPI {
         if (!column) {
             return [];
         }
-
+        return column.items;
     }
+
     static insertItem(columnId, content) {
         const data = read();
         const column = data.find(column => column.id == columnId);
@@ -31,11 +32,10 @@ export default class KanbanAPI {
             }
         })();
         if(!item){
-            throw new Error("Item not found.");
+            throw new Error("Item não encontrado");
         }
 
-        item.content = newProps.content === undefined ? item.content 
-        : newProps.content;
+        item.content = newProps.content === undefined ? item.content : newProps.content;
         //Update column
         if(
             newProps.columnId !== undefined
@@ -43,12 +43,12 @@ export default class KanbanAPI {
         ){
             const targetColumn = data.find(column => column.id == newProps.columnId);
             if(!targetColumn){
-                throw new Error("target column not found.");
+                throw new Error("coluna de destino não encontrada.");
             }
             //delete the item
             currentColumn.items.splice(currentColumn.items.indexOf(item),1);
             //move item
-            targetColumn.item.splice(newProps.position,0,item);
+            targetColumn.items.splice(newProps.position,0,item);
         }
         save(data);
     }

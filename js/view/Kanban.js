@@ -12,17 +12,17 @@ export default class Kanban{
     static columns(){
         return [
             {
-                id:1,
+                id: 1,
                 title:'Não foi iniciado'
             },
             {
-                id:2,
+                id: 2,
                 title:'Em andamento'
             },
             {
-                id:3,
+                id: 3,
                 title:'Concluída'
             },
-        ]
+        ];
     }
 }
